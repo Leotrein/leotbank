@@ -8,7 +8,7 @@ export class Negociacoes {
         this._negociacoes = [];
     }
 
-    adcionarNegociacao(negociacao: Negociacao): void {
+    public adcionarNegociacao(negociacao: Negociacao): void {
         this._negociacoes.push(negociacao);
     }
 
