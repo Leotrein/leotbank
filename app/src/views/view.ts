@@ -1,6 +1,9 @@
-export class View {
-    constructor(seletor, escapar) {
-        this.escapar = false;
+export abstract class View<T> {
+
+    protected elemento: HTMLElement;
+    private escapar: boolean = false;
+
+    constructor(seletor: string, escapar?: boolean) {
         if (escapar) {
             this.escapar = escapar;
         }
@@ -8,9 +11,10 @@ export class View {
         if (!htmlElement) {
             throw new Error("Seletor não existe no DOM");
         }
-        this.elemento = htmlElement;
+        this.elemento = htmlElement as HTMLElement;
     }
-    update(model) {
+
+    public update(model: T): void {
         let template = this.template(model);
         if (this.escapar) {
             const regex = /<script>[/s/S]*?<\/script>/;
@@ -18,4 +22,6 @@ export class View {
         }
         this.elemento.innerHTML = template;
     }
+
+    protected abstract template(model: T): string;
 }

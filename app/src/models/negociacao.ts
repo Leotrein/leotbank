@@ -22,4 +22,13 @@ export class Negociacao {
         return this._quantidade * this._valor
     }
 
+    public static criaDe(data: string, quantidade: string, valor: string): Negociacao {
+        const exp = /-/g;
+        return new Negociacao(
+            new Date(data.replace(exp, ",")), 
+            Number.parseInt(quantidade),
+            Number.parseFloat(valor) 
+        );
+    }
+
 }
