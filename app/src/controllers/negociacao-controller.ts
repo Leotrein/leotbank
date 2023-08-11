@@ -1,3 +1,4 @@
+import { domInjector } from "../decorators/dom-injector.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
 import { MensagemView } from "../views/mensagem-view.js";
@@ -5,17 +6,17 @@ import { NegociacoesView } from "../views/negociacoes-view.js";
 
 export class NegociacaoController {
     
+    @domInjector("#data")
     private _inputData: HTMLInputElement;
+    @domInjector("#quantidade")
     private _inputQuantidade: HTMLInputElement;
+    @domInjector("#valor")
     private _inputValor: HTMLInputElement;
     private _negociacoes: Negociacoes = new Negociacoes();
     private _negociacoesView: NegociacoesView = new NegociacoesView("#negociacoesView", true);
     private _mensagemView: MensagemView = new MensagemView("#mensagemView");
     
     constructor() {
-        this._inputData = document.querySelector("#data") as HTMLInputElement;
-        this._inputQuantidade = document.querySelector("#quantidade") as HTMLInputElement;
-        this._inputValor = document.querySelector("#valor") as HTMLInputElement;
         this._negociacoesView.update(this._negociacoes);
     }
 
