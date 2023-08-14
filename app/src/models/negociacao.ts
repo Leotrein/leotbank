@@ -35,4 +35,18 @@ export class Negociacao {
         return `Data: ${this.Data},\nQuantidade: ${this.Quantidade},\nValor: ${this.Valor}`;
     }
 
+    public Equals(obj: any): boolean {
+        const outraNegociacao = obj as Negociacao;
+
+        if (!outraNegociacao)
+        {
+            return false;
+        }
+        return (outraNegociacao.Data.getDate() === this.Data.getDate()
+            && outraNegociacao.Data.getMonth() === this.Data.getMonth()
+            && outraNegociacao.Data.getFullYear() === this.Data.getFullYear()
+            && outraNegociacao.Quantidade === this.Quantidade
+            && outraNegociacao.Valor === this.Valor);
+    }
+
 }

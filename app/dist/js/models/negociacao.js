@@ -23,4 +23,16 @@ export class Negociacao {
     toString() {
         return `Data: ${this.Data},\nQuantidade: ${this.Quantidade},\nValor: ${this.Valor}`;
     }
+    Equals(obj) {
+        const outraNegociacao = obj;
+        if (!outraNegociacao) {
+            return false;
+        }
+        return (outraNegociacao.Data.getDate() === this.Data.getDate()
+            && outraNegociacao.Data.getMonth() === this.Data.getMonth()
+            && outraNegociacao.Data.getFullYear() === this.Data.getFullYear()
+            && outraNegociacao.Quantidade === this.Quantidade
+            && outraNegociacao.Valor === this.Valor);
+    }
 }
+//# sourceMappingURL=negociacao.js.map
