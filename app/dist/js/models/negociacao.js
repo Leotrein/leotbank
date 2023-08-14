@@ -20,4 +20,7 @@ export class Negociacao {
         const exp = /-/g;
         return new Negociacao(new Date(data.replace(exp, ",")), Number.parseInt(quantidade), Number.parseFloat(valor));
     }
+    toString() {
+        return `Data: ${this.Data},\nQuantidade: ${this.Quantidade},\nValor: ${this.Valor}`;
+    }
 }

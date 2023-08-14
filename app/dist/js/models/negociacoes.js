@@ -8,4 +8,7 @@ export class Negociacoes {
     get Negociacoes() {
         return this._negociacoes;
     }
+    toString() {
+        return JSON.stringify(this._negociacoes, null, 2);
+    }
 }

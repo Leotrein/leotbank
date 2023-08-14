@@ -8,3 +8,10 @@ form.addEventListener("submit", event => {
     event.preventDefault();
     controller.adicionar();
 });
+const botaoImporta = document.querySelector("#botao-importa");
+if (!botaoImporta) {
+    throw new Error("Botao importa não foi encontrado");
+}
+botaoImporta.addEventListener("click", () => {
+    controller.importarDados();
+});

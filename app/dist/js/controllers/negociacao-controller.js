@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { domInjector } from "../decorators/dom-injector.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
+import { NegociacoesService } from "../services/negociacoes-service.js";
 import { MensagemView } from "../views/mensagem-view.js";
 import { NegociacoesView } from "../views/negociacoes-view.js";
 export class NegociacaoController {
@@ -14,6 +15,7 @@ export class NegociacaoController {
         this._negociacoes = new Negociacoes();
         this._negociacoesView = new NegociacoesView("#negociacoesView", true);
         this._mensagemView = new MensagemView("#mensagemView");
+        this._negociacoesService = new NegociacoesService();
         this._negociacoesView.update(this._negociacoes);
     }
     adicionar() {
@@ -25,6 +27,13 @@ export class NegociacaoController {
         this._negociacoes.adcionarNegociacao(negociacao);
         this.limparFormulario();
         this.atualizarView();
+    }
+    importarDados() {
+        this._negociacoesService.obterNegociacoesDoDia()
+            .then(negociacoes => {
+            negociacoes.forEach(n => this._negociacoes.adcionarNegociacao(n));
+            this._negociacoesView.update(this._negociacoes);
+        });
     }
     isDiaUtil(data) {
         return data.getDay() > 0 && data.getDay() < 6;

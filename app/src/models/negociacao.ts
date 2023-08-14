@@ -31,4 +31,8 @@ export class Negociacao {
         );
     }
 
+    public toString(): string {
+        return `Data: ${this.Data},\nQuantidade: ${this.Quantidade},\nValor: ${this.Valor}`;
+    }
+
 }

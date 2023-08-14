@@ -16,4 +16,8 @@ export class Negociacoes {
     get Negociacoes(): ReadonlyArray<Negociacao> {
         return this._negociacoes;
     }
+
+    public toString(): string {
+        return JSON.stringify(this._negociacoes, null, 2);
+    }
 }
